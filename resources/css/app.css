@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Mint Leaves Falling Animation */
+@keyframes fall {
+  0% {
+    top: -50px;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes sway {
+  0%, 100% {
+    transform: translateX(0px);
+  }
+  25% {
+    transform: translateX(20px);
+  }
+  75% {
+    transform: translateX(-20px);
+  }
+}
+
+@keyframes spin-leaf {
+  0% {
+    transform: rotateZ(0deg) rotateY(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg) rotateY(360deg);
+  }
+}
+
+#falling-leaves-container {
+  /* Positioned absolutely within navbar via blade classes */
+}
+
+.falling-leaf {
+  position: absolute;
+  top: -50px;
+  pointer-events: none;
+  animation: fall 4s linear infinite, sway 2s ease-in-out infinite, spin-leaf 3s linear infinite;
+  z-index: 0;
+  will-change: transform, top;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.falling-leaf svg {
+  display: block;
+}
+
+/* Promotional Banner Marquee */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Text Glow and Shine Animation */
+@keyframes text-shine {
+  0% {
+    background-position: 0% 50%;
+    text-shadow: 0 0 10px rgba(249, 115, 22, 0.2);
+  }
+  50% {
+    background-position: 100% 50%;
+    text-shadow: 0 0 25px rgba(249, 115, 22, 0.8), 0 0 40px rgba(249, 115, 22, 0.3);
+  }
+  100% {
+    background-position: 0% 50%;
+    text-shadow: 0 0 10px rgba(249, 115, 22, 0.2);
+  }
+}
+
+.animate-text-shine {
+  background: linear-gradient(to right, #ea580c 20%, #fde047 50%, #ea580c 80%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: text-shine 3s linear infinite;
+  display: inline-block;
+}
