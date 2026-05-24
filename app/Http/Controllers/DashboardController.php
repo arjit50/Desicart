@@ -101,10 +101,10 @@ class DashboardController extends Controller
     {
         $wishlist = Wishlist::where('user_id', Auth::id())
             ->with(['product.images'])
-            ->get();
+            ->paginate(9);
 
         return view('dashboard.wishlist', [
-            'wishlist' => $wishlist
+            'wishlistItems' => $wishlist
         ]);
     }
 
